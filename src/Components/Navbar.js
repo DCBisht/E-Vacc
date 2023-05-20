@@ -14,13 +14,13 @@ function Navbar() {
         <a href="/About">About</a>
         
     </li>
-    <li className="nav-item x12">
+    {/* <li className="nav-item x12">
         <a href="/AdminDashBoard">AdminDashBoard</a>
         
-    </li>
-    <li className="nav-item x12">
+    </li> */}
+    {/* <li className="nav-item x12">
         <a href="/Profile">Profile</a>
-    </li>
+    </li> */}
         <li className="nav-item dropdown x12">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Login

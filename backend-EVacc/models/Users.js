@@ -26,9 +26,9 @@ const UserSchema=new Schema({
         type:Number,
         required:true
     },
-    date:{
-        type:Date,
-        default:Date.now
+    vs:{
+        type:Boolean,
+        default:false
     }
 });
 

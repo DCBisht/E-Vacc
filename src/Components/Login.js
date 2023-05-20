@@ -14,13 +14,13 @@ export default function Login() {
     event.preventDefault();
     const dob=event.target.dob.value;
     const phNo=event.target.PhNo.value;
-    navigate('/User',{dob,phNo});
-    // try{
-    //   const response=await axios.post('/user/UserLogin',{dob,phNo});
-    //   console.log(response);
-    //   setUserData(response.data);
-    //   navigate('/User',{dob,phNo});
-    // }catch(error) {console.log(error);}
+    
+    try{
+      const response=await axios.post('/user/UserLogin',{dob,phNo});
+      console.log(response);
+      setUserData(response.data);
+      // navigate('/UserProfile',{userData:userData});
+    }catch(error) {console.log(error);}
   }
   return (
     <div>
@@ -34,6 +34,33 @@ export default function Login() {
         </form>
       </div>
       </div>
+      <table>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Date of Birth</th>
+              <th>Age</th>
+              <th>Vaccination Status</th>
+              <th>Message</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            {userData && userData.map(user => (
+              <tr key={user.phNo}>
+                <td>{user.firstName}</td>
+                <td>{user.lastName}</td>
+                <td>{user.phNo}</td>
+                <td>{user.dob}</td>
+                <td>{user.age}</td>
+                <td>false</td>
+                <td><button >Send message</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
   )
 }

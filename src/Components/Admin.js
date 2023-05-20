@@ -1,5 +1,6 @@
 import React, {  useEffect,useState } from 'react';
 import './AdminPage.css';
+import axios from 'axios';
 //import { useNavigate } from 'react-router-dom';
 const AdminPage = () => {
   const [userData, setUserData] = useState([]);
@@ -7,8 +8,6 @@ const AdminPage = () => {
   useEffect(() => {
     // Simulating fetching data from a database
     fetchUserData()
-      .then(data => setUserData(data))
-      .catch(error => console.log(error));
   }, []);
 
   const fetchUserData = async () => {
@@ -39,14 +38,14 @@ const handleOnclick= async()=>{
             </tr>
           </thead>
           <tbody>
-            {userData.map(user => (
+            {userData && userData.map(user => (
               <tr key={user.phNo}>
-                <td>{user.fname}</td>
-                <td>{user.lname}</td>
+                <td>{user.firstName}</td>
+                <td>{user.lastName}</td>
                 <td>{user.phNo}</td>
                 <td>{user.dob}</td>
                 <td>{user.age}</td>
-                <td>{user.vs}</td>
+                <td>Not Vaccinated</td>
                 <td><button onClick={handleOnclick}>Send message</button></td>
               </tr>
             ))}

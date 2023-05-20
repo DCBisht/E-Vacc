@@ -9,7 +9,6 @@ export default function Home() {
         <div className="content">
             <h3>stay safe, stay healthy, stay vaccinated</h3>
             <p> Vaccination throughout the childhood is very essential as it helps in providing immunity before children are exposed to any life-threatening diseases.</p>
-            {/* <a href="/Book" className="btn">Book Vaccination<span className="fas fa-chevron-right"></span> </a> */}
         </div>
     </section>
   )
