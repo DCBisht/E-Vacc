@@ -51,7 +51,6 @@ function App() {
           <Route path="/UserProfile" element={<UserProfile/>} />
 
           <Route path="/Admin" element={<AdminPage/>} />
-          {/* <Route path="/User" element={<UserProfile/>} /> */}
           <Route path="/Alogin" element={<Alogin />} />
         </Routes>
       </BrowserRouter>
