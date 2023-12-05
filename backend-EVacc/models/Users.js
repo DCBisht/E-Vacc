@@ -14,7 +14,7 @@ const UserSchema=new Schema({
     },
     phNo:{
         type:Number,
-        default:0000000000,
+        default:0,
         unique:true,
         required:true
     },

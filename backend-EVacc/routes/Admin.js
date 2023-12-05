@@ -24,10 +24,10 @@ router.post('/Login',async (req,res)=>{
 router.get('/getAllUsers',async (req,res)=>{
     const users=await Users.find();
 
-    // if(!user){
-    //     return res.status(401).json({error:'Invalid Date of Birth of Password'});
-    // }
-    //console.log(users);
+    if(!user){
+        return res.status(401).json({error:'Invalid Date of Birth of Password'});
+    }
+    console.log(users);
     res.json(users);
 })
 
