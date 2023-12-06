@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const Vaccine = require('./Vaccine');
 const {Schema}=mongoose;
 
 const UserSchema=new Schema({
@@ -15,7 +16,7 @@ const UserSchema=new Schema({
     phNo:{
         type:Number,
         default:0,
-        unique:true,
+        // unique:true,
         required:true
     },
     dob:{
@@ -26,9 +27,8 @@ const UserSchema=new Schema({
         type:Number,
         required:true
     },
-    vs:{
-        type:Boolean,
-        default:false
+    vaccines: {
+        type: [Vaccine.schema],
     }
 });
 

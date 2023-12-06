@@ -13,6 +13,29 @@ const UserLogin = async (req,res)=>{
     console.log(currUser);
     res.json(currUser);
       }
-}
+};
 
-module.exports={UserLogin};
+const UserSignUp = async (req,res)=>{
+  console.log(req.body);
+  try {
+    // Create a new user using the User model
+      const newUser = new Users({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phNo: req.body.phNo,
+      dob: req.body.dob,
+      age: req.body.age,
+      vaccines: req.body.vaccines, // Assuming you provide an array of vaccines in the request body
+    });
+
+    // Save the new user to the database
+    const savedUser = await newUser.save();
+
+    res.status(201).json(savedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+module.exports={UserLogin,UserSignUp};
