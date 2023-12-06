@@ -4,8 +4,8 @@ const dotenv= require("dotenv");
 
 dotenv.config();
 
-const username = encodeURIComponent(process.env.MONGODB_USERNAME);
-const password = encodeURIComponent(process.env.MONGODB_PASSWORD);
+const username = encodeURIComponent("chakshubisht459");
+const password = encodeURIComponent("forproduction");
 const uri = `mongodb+srv://${username}:${password}@cluster0.h9p94dc.mongodb.net/?retryWrites=true&w=majority`;
 
 const app = express();
