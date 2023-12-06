@@ -8,4 +8,4 @@ router.post('/Login',checkAdmin);
 router.get('/getAllUsers',getAllUsers);
 router.post('/createUsers',createUsers);
 
-module.exports=router;
+module.exports = router;
