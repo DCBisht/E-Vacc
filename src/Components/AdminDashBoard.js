@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './AdminDash.css';
+import '../CSS/AdminDash.css';
 import { useNavigate } from 'react-router-dom';
 
 const AdminDashBoard = () => {

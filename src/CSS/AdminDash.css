@@ -1,4 +1,4 @@
-.landscape-view {
+/* .landscape-view {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -21,7 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-left: 100px; */
+    margin-left: 100px;
     margin-bottom: 8px;
   }
   
@@ -63,4 +63,4 @@
   .create-user-button:active {
     transform: translateY(1px);
   }
-  
+   */

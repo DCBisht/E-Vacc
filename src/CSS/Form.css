@@ -1,7 +1,7 @@
-.form-container {
+/* .form-container {
     max-width: 400px;
     margin: 0 auto;
-    /* padding-top: 200px; */
+    padding-top: 200px;
     padding: 20px;
     background-color: #f2f2f2;
     border-radius: 4px;
@@ -58,4 +58,4 @@
   
   button[type='submit']:active {
   transform: translateY(1px);
-  }
+  } */

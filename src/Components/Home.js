@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+// import '../CSS/style.css';
 export default function Home() {
   return (
     <section className="home" id="home">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './s.css';
+import '../CSS/s.css';
 const VaccineList = () => {
   const [vaccines, setVaccines] = useState([
     { id: 1, name: 'Vaccine 1', chosen: false },

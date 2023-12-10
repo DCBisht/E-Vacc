@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import './Alogin.css';
+import '../CSS/Alogin.css';
 import axios from 'axios';
 
 function Alogin() {

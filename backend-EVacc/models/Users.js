@@ -1,36 +1,30 @@
-const mongoose=require('mongoose');
-const Vaccine = require('./Vaccine');
-const {Schema}=mongoose;
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const UserSchema=new Schema({
-    firstName:{
-        type:String,
-        default:'',
-        required:true
+const UserSchema = new Schema({
+    name: {
+        type: String,
+        default: '',
+        required: true
     },
-    lastName:{
-        type:String,
-        default:'',
-        required:true
+    phNo: {
+        type: Number,
+        default: 0,
+        required: true
     },
-    phNo:{
-        type:Number,
-        default:0,
-        // unique:true,
-        required:true
+    dob: {
+        type: String,
+        required: true
     },
-    dob:{
-        type:String,
-        required:true
+    age: {
+        type: Number,
+        required: true
     },
-    age:{
-        type:Number,
-        required:true
-    },
-    vaccines: {
-        type: [Vaccine.schema],
-    }
+    vaccines: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Vaccines',
+        sparse: true,
+    }]
 });
 
-
-module.exports=mongoose.model('Users',UserSchema);
+module.exports = mongoose.model('Users', UserSchema);

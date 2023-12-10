@@ -1,6 +1,14 @@
-const express = require("express");
+
+const express= require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const dotenv= require("dotenv");
+
+const corosOptions = {
+    origin: '*',
+    Credential: true,
+    optionSuccessStatus: 200
+}
 
 dotenv.config();
 
@@ -10,6 +18,7 @@ const uri = `mongodb+srv://${username}:${password}@cluster0.h9p94dc.mongodb.net/
 
 const app = express();
 app.use(express.json());
+app.use(cors(corosOptions));
 
 mongoose.connect(uri).then(()=>app.listen(5000, ()=>{
     console.log(`Connected to database and server is running at ${5000}`);

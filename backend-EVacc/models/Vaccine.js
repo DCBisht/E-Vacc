@@ -6,7 +6,8 @@ const VaccineSchema= new Schema({
     name:{
         type:String,
         required:true,
-        unique:true,
+        sparse:true,
+        // unique:true,
     },
     manufacturer: {
         type: String,

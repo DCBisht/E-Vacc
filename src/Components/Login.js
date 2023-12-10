@@ -1,67 +1,88 @@
-import React from 'react';
-import './Login.css';
-import './Alogin.css';
-import axios from 'axios';
-import { useState } from 'react';
-// import UserProfile from './User';
-import { useNavigate } from 'react-router-dom';
-// import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-export default function Login() {
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-  const [userData,setUserData]=useState([]);
+const Login = () => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [phNo, setPhNo] = useState("");
+  const [dob, setDOB] = useState("");
   const navigate = useNavigate();
-  const handleUser=async (event)=>{
-    event.preventDefault();
-    const dob=event.target.dob.value;
-    const phNo=event.target.PhNo.value;
-    
-    try{
-      const response=await axios.post('/user/UserLogin',{dob,phNo});
-      console.log(response);
-      setUserData(response.data);
-      // navigate('/UserProfile',{userData:userData});
-    }catch(error) {console.log(error);}
+  function AddNewUser() {
+    if (!name || !password || !phNo || !dob) {
+      alert("Please enter both username and password.");
+      return;
+    }
+    const age = 18;
+    // console.log({ name, password, phNo, dob, age });
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var raw = JSON.stringify({ name, password, phNo, dob, age });
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+    fetch("http://localhost:5000/user/UserSignUp", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(result);
+        // Check if the login was successful (you may need to adjust this based on your backend response)
+        if (result != null) {
+          // Navigate to the home page
+          navigate("/VaccineList");
+        } else {
+          alert("Login failed. Please check your credentials.");
+        }
+      })
+      .catch((error) => console.log("error", error));
   }
-  return (
-    <div>
-    <div className="wrapper">
-      <div className="form signup">
-        <header>Vaccine Status</header>
-        <form onSubmit={handleUser}> 
-          <input type="string" name="dob" placeholder="Date of Birth" required />
-          <input type="number" name="PhNo" placeholder="Phone Number" required />
-          <input type="submit" className="button" value="See Vaccination Status" />
-        </form>
-      </div>
-      </div>
-      <table>
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Phone Number</th>
-              <th>Date of Birth</th>
-              <th>Age</th>
-              <th>Vaccination Status</th>
-              <th>Message</th>
-             
-            </tr>
-          </thead>
-          <tbody>
-            {userData && userData.map(user => (
-              <tr key={user.phNo}>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.phNo}</td>
-                <td>{user.dob}</td>
-                <td>{user.age}</td>
-                <td>false</td>
-                <td><button >Send message</button></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-  )
-}
 
+  return (
+    <div className="Login" id="Login">
+      <img
+        src="https://healthier.stanfordchildrens.org/wp-content/uploads/2022/06/21_1299711083_iStock-scaled.jpg"
+        alt="image"
+      />
+
+      <div className="form">
+        <h1 className="my-logo">
+          <span className="fas fa-heartbeat"></span> E-VACC
+        </h1>
+        <h1> WELCOME BACK!!</h1>
+        <h3 style={{ textAlign: "center" }}>Please Enter Your Details</h3>
+        <input
+          placeholder="Your Name"
+          type="String"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        ></input>
+        <input
+          placeholder="Your Phone Number"
+          type="number"
+          value={phNo}
+          onChange={(e) => setPhNo(e.target.value)}
+        ></input>
+        <input
+          placeholder="Your Date of Birth"
+          type="date"
+          value={dob}
+          onChange={(e) => setDOB(e.target.value)}
+        ></input>
+        <input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+        <button onClick={AddNewUser} className="login-button">
+          {" "}
+          Log In
+        </button>{" "}
+      </div>
+    </div>
+  );
+};
+
+export default Login;
