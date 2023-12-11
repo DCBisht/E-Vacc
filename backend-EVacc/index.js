@@ -28,3 +28,4 @@ mongoose.connect(uri).then(()=>app.listen(5000, ()=>{
 
 app.use('/admin',require('./routes/Admin'));
 app.use('/user',require('./routes/User'));
+app.use('/Vaccine',require('./routes/Vaccine'));

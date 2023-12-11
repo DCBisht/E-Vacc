@@ -1,0 +1,29 @@
+.vaccine-card{
+    border: 1px solid #06295375;
+    width: 400px;
+    padding: 40px;
+    margin: 6px;
+    background-color: #06295395;
+    height: 350px;
+}
+
+.vaccine-card h3{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.book-now {
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  
+  .vaccine-card:hover .book-now {
+    opacity: 1;
+  }
+
+  .vaccine-card:hover .other {
+    opacity: 0;
+    height: 100px;
+  }

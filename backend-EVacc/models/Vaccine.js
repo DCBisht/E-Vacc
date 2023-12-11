@@ -1,5 +1,4 @@
 const mongoose= require("mongoose");
-const HospitalSchema = require("./HospitalSchema");
 const {Schema}= mongoose;
 
 const VaccineSchema= new Schema({
@@ -26,9 +25,9 @@ const VaccineSchema= new Schema({
         type: Number,
         default: 0,
       },
-      hospitals:{
-        type:[HospitalSchema.schema],
-      },  
+      hospitals:[{ 
+        type: mongoose.Types.ObjectId, 
+        ref: "hospitalSchema" }],  
 });
 
 module.exports = mongoose.model("Vaccine",VaccineSchema);

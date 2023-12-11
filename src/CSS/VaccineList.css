@@ -1,0 +1,38 @@
+.vaccine-list {
+  
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: azure;
+  background-image: url("https://www.optum.com/health-articles/sites/default/files/styles/article_feature/public/images/AgeByAgeGuideToKidsImmunizations-Web-1200x800-72_7.jpg?itok=mmJLu8Po");
+  background-attachment: fixed; /* This keeps the background fixed while scrolling */
+  background-repeat: no-repeat; /* This prevents the background from repeating */
+  background-size: cover; 
+}
+
+.vaccine-all{
+  position: relative;
+}
+.vaccine-list img{
+  width: 100%;
+  /* position: absolute; */
+  position: sticky;
+  top:0;
+  z-index: -1;
+}
+.vaccine-list h4{
+    background-color: rgb(170 22 22 / 72%);
+    padding: 4px;
+    margin: 2px;
+    margin-left: 10px;
+    margin-top: 20px;
+
+}
+
+.vaccine-List-map{
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

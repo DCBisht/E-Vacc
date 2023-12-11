@@ -35,7 +35,10 @@ const Login = () => {
           alert("Login failed. Please check your credentials.");
         }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => {
+        console.log("error", error);
+        alert("Internal Server Error Please Try Again Later");}
+        );
   }
 
   return (

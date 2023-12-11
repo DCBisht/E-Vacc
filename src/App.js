@@ -2,7 +2,8 @@ import React from 'react';
 import { RouterProvider, createBrowserRouter} from "react-router-dom";
 import Home from './Components/Home.js';
 import Navbar from './Components/Navbar.js';
-import Login from './Components/Login.js'
+import Login from './Components/Login.js';
+import VaccineList from "./Components/VaccineList.js";
 const router = createBrowserRouter([
   {
     path:'/',
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path:'/VaccineList',
-    element:<Navbar/>,
+    element:<><Navbar/><VaccineList/></>,
   }
 ]);
 function App() {
