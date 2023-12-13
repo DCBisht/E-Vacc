@@ -6,8 +6,8 @@ const addNewVaccine = async(req, res)=>{
         if (!name || !description) {
             return res.status(400).json({ error: 'Name and Manufacturer are required fields' });
         }
-        // const newVaccine= new Vaccine({name,manufacturer,image,description,availableQuantity,hospitals});
-        // await newVaccine.save();
+        const newVaccine= new Vaccine({name,manufacturer,image,description,availableQuantity,hospitals});
+        await newVaccine.save();
         res.status(201).json({pass:"Passed"});
     }
     catch(error){

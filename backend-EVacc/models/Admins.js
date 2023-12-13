@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 const {Schema}=mongoose;
 
 const AdminSchema=new Schema({
-    fullName:{
+    adminid:{
         type:String,
         default:'',
         required:true
@@ -15,10 +15,6 @@ const AdminSchema=new Schema({
         type:Boolean,
         default:true
     },
-    date:{
-        type:Date,
-        default:Date.now
-    }
 });
 
 module.exports=mongoose.model('Admins',AdminSchema);

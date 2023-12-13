@@ -17,15 +17,18 @@ const Users = require('../models/Users');
     res.send(req.body.fullName);
 }
 
- const getAllUsers = async (req,res)=>{
-    const users=await Users.find();
-
-    if(!user){
-        return res.status(401).json({error:'Invalid Date of Birth of Password'});
+const getAllUsers = async (req, res) => {
+    let users;
+    try {
+      users = await User.find();
+    } catch (err) {
+      return console.log(err);
     }
-    console.log(users);
-    res.json(users);
-}
+    if (!users) {
+      return res.status(500).json({ message: "Unexpected Error Occured" });
+    }
+    return res.status(200).json({ users });
+  };
 
  const createUsers= async(req,res)=>{
     try{

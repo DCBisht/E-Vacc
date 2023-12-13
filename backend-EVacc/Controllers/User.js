@@ -41,4 +41,59 @@ const UserSignUp = async (req,res)=>{
   }
 };
 
-module.exports={UserLogin,UserSignUp};
+const getAllUsers = async (req, res) => {
+  let users;
+  try {
+    users = await User.find();
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!users) {
+    return res.status(500).json({ message: "Unexpected Error Occured" });
+  }
+  return res.status(200).json({ users });
+};
+
+const deleteUser = async (req, res) => {
+  const id = req.params.id;
+  let user;
+  try {
+    user = await User.findByIdAndRemove(id);
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!user) {
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+  return res.status(200).json({ message: "Deleted Successfully" });
+};
+const getBookingsOfUser = async (req, res) => {
+  const id = req.params.id;
+  let bookings;
+  try {
+    bookings = await Bookings.find({ user: id })
+      .populate("movie")
+      .populate("user");
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!bookings) {
+    return res.status(500).json({ message: "Unable to get Bookings" });
+  }
+  return res.status(200).json({ bookings });
+};
+
+const getUserById = async (req, res) => {
+  const id = req.params.id;
+  let user;
+  try {
+    user = await User.findById(id);
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!user) {
+    return res.status(500).json({ message: "Unexpected Error Occured" });
+  }
+  return res.status(200).json({ user });
+};
+module.exports={UserLogin,UserSignUp, getAllUsers,deleteUser,getBookingsOfUser,getUserById};
