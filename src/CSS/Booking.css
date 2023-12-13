@@ -1,0 +1,37 @@
+.addVac{
+    margin-top: 70px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.addVac .form{
+    width: 450px;
+    display: flex;
+    text-align: center;
+}
+.addVac .form label{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.addVac .form input{
+    width: 300px;
+}
+.addVac img{
+    height: 600px;
+}
+.addVac .form textarea{
+    width:300px ;
+}
+.addVac .form button{
+    margin-left: 160px;
+    height: 50px;
+    width: 150px;
+    color: blue;
+}
+.addVac .form button:hover{
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
