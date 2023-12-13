@@ -1,45 +1,31 @@
 import React from "react";
 import "../CSS/Navbar.css";
+import {Link} from 'react-router-dom'
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg ">
       <div className="header">
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           <i className="fas fa-heartbeat"></i> E-VACC
-        </a>
+        </Link>
         <nav className="navbar">
           <li className="nav-item">
-            <a href="/">Home</a>
+          <Link to="/">Home</Link>
           </li>
 
           <li className="nav-item ">
-            <a href="/About">About</a>
+          <Link to="/About">About</Link>
+          </li>
+          <li className="nav-item ">
+          <Link to="/VaccineList">Vaccines</Link>
           </li>
           <li className="nav-item dropdown ">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
+          <Link to= "/login"> 
               Login
-            </a>
-            <div
-              className="dropdown-menu x12"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              <a className="dropdown-item" href="/alogin">
-                Admin Login
-              </a>
-              <a className="dropdown-item" href="/login">
-                User Login
-              </a>
-            </div>
+            </Link>
+           
           </li>
         </nav>
-        <div id="menu-btn" className="fas fa-bars"></div>
       </div>
     </nav>
   );

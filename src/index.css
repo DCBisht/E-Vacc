@@ -21,6 +21,9 @@ code {
 .Login .my-logo{
   color: red;
 }
+.Login .head{
+   text-align: center;
+}
 .Login  img {
     width: 98%;
     height: 95%;
@@ -56,4 +59,9 @@ code {
   background-color: rgba(240, 240, 240, 0.7);
   border: 1px solid #ccc;
   border-radius: 20px;
+}
+.Login .flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

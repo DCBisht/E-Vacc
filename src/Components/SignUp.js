@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const [name, setName] = useState("");
+const SignUp = () => {
   const [password, setPassword] = useState("");
   const [phNo, setPhNo] = useState("");
-  const [dob, setDOB] = useState("");
   const navigate = useNavigate();
   function AddNewUser() {
-    if (!name || !password || !phNo || !dob) {
+    if ( !password || !phNo ) {
       alert("Please enter both username and password.");
       return;
     }
@@ -57,25 +55,13 @@ const Login = () => {
         </Link>
         <h1> WELCOME BACK!!</h1>
         </div>
-        <h3 style={{ textAlign: "center" }}>Please Enter Your Details</h3>
-        <input
-          placeholder="Your Name"
-          type="String"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        ></input>
+        <h3 style={{ textAlign: "center" }}>Please Enter Your Credentials</h3>
+        
         <input
           placeholder="Your Phone Number"
           type="number"
           value={phNo}
           onChange={(e) => setPhNo(e.target.value)}
-        ></input>
-        <input
-          placeholder="Your Date of Birth"
-          type="date"
-          value={dob}
-          onChange={(e) => setDOB(e.target.value)}
         ></input>
         <input
           placeholder="Password"
@@ -84,12 +70,12 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         ></input>
         <div  className="flex">
-        <Link to="/SignUp">Sign Up</Link>
+        <Link to="/Login">Login</Link>
         <Link to="/Alogin">Are you an Admin</Link>
         </div>
         <button onClick={AddNewUser} className="login-button">
           {" "}
-          Log In
+          Sign Up
         </button>{" "}
         
       </div>
@@ -97,4 +83,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

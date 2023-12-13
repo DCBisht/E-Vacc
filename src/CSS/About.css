@@ -1,0 +1,38 @@
+/* .about .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+} */
+.about{
+    /* margin: 100px; */
+    /* padding-top: 50px; */
+    /* font-size: 100px; */
+    padding: 50px 50px 50px 50px;
+    background-image: url("https://cdn.who.int/media/images/default-source/2021-dha-images/the-survey-team-interviews-migrant-workers-for-the-survey-on-covid-19-vaccine-for-myanmar-migrant-workers-in-maesot-tak-17-november-2021-who-anat-duangjan.jpg?sfvrsn=5227af5c_6");
+    background-attachment: fixed; /* This keeps the background fixed while scrolling */
+    background-repeat: no-repeat; /* This prevents the background from repeating */
+    background-size: cover;
+}
+
+/* .about .row .content{
+    flex: 1 1 45rem;
+} */
+.about .row .content h3{
+    padding-left: 10px;
+    text-transform: uppercase;
+    color: var(--black);
+    text-shadow: var(--text-shadow);
+    font-size: 4rem;
+    line-height: 1.8;
+    background-color: rgba(240, 248, 255, 0.341);
+}
+.about  p{
+    border: 1px solid black;
+    /* padding-left: 1000px; */
+    background-color: rgba(240, 248, 255, 0.507);
+    color: var(--light-color);
+    padding: 1rem 1rem;
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
