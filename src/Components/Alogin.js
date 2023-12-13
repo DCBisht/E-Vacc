@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Alogin = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [password, setPassword] = useState("");
   const [adminId, setAdminId] = useState("");
-  const navigate = useNavigate();
   function AddNewUser() {
     if ( !password || !phNo ) {
       alert("Please enter both username and password.");
