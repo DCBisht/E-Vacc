@@ -13,7 +13,7 @@ const CreateUser = () => {
     const password= name+phNo;
 
     try {
-      const response = await axios.post("http://localhost:5000/admin/createUsers", {
+      const response = await axios.post("https://evacc-backend45.onrender.com/admin/createUsers", {
         name,
         phNo,
         dob,

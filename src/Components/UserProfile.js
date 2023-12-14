@@ -1,6 +1,9 @@
 // import React from 'react'
 import React, {  useEffect,useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { userActions } from "./store";
 function UserProfile() {
 const styles = {
         container: {
@@ -35,7 +38,15 @@ const styles = {
         },
 };
   const [userData,setUserData]= useEffect([]);
+  useEffect(()=>{
+    getUserById().then((data)=>{
+      console.groupCollapsed(data);
+      setUserData(data);
+    })
+  },[]);
+  const sendMessage=()=>{
 
+  }
   
 
    return (

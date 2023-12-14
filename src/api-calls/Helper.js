@@ -29,7 +29,7 @@ export const fetchBlogs = async ()=>{
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://localhost:5000/Vaccine/addVaccine',
+        url: 'https://evacc-backend45.onrender.com/Vaccine/addVaccine',
         headers: { 
           'Content-Type': 'application/json'
         },
@@ -46,7 +46,7 @@ export const fetchBlogs = async ()=>{
   };
 
  export const getAllVaccine=async ()=>{
-    const res = await axios.get("http://localhost:5000/Vaccine/").catch((err) => console.log(err));
+    const res = await axios.get("https://evacc-backend45.onrender.com/Vaccine/").catch((err) => console.log(err));
 
     if (res.status !== 200) {
       return console.log("No Data");
@@ -58,7 +58,7 @@ export const fetchBlogs = async ()=>{
 }
 
 export const getVaccineDetails= async ({id})=>{
-    const res = await axios.get(`http://localhost:5000/Vaccine/${id}`).catch((err) => console.log(err));
+    const res = await axios.get(`https://evacc-backend45.onrender.com/Vaccine/${id}`).catch((err) => console.log(err));
     // console.log(res);
     if (res.status !== 200) {
       return console.log("No Data");
@@ -80,7 +80,7 @@ export const newBooking = async (data) => {
     return null;
   }
   const res = await axios
-    .post("http://localhost:5000/Booking/", {
+    .post("https://evacc-backend45.onrender.com/Booking/", {
       vaccine: data.vaccine,
       date: data.date,
       user: localStorage.getItem("userId"),
@@ -95,7 +95,7 @@ export const newBooking = async (data) => {
 };
 
 export const getAllUsers= async () => {
-  const res = await axios.get("http://localhost:5000/user").catch((err) => console.log(err));
+  const res = await axios.get("https://evacc-backend45.onrender.com/user").catch((err) => console.log(err));
 
   if (res.status !== 200) {
     return console.log("No Data");
@@ -108,7 +108,7 @@ export const getAllUsers= async () => {
 export const onAddVaccine= async(data) =>{
     // const res=
     const res = await axios
-    .post("http://localhost:5000/Vaccine/addVaccine", {
+    .post("https://evacc-backend45.onrender.com/Vaccine/addVaccine", {
       name:data.name,
       when_to_give:data.when_to_give,
       dose:data.dose,
@@ -124,3 +124,17 @@ export const onAddVaccine= async(data) =>{
   const resData = await res.data;
   return resData;
 };
+
+export const getUserById = async ()=>{
+  const user= localStorage.getItem("userId");
+  const res = await axios
+    .get( `https://evacc-backend45.onrender.com/user/:${user}`, {
+    })
+    .catch((err) => console.log(err));
+
+  if (res.status !== 201) {
+    return console.log("Unexpected Error");
+  }
+  const resData = await res.data;
+  return resData;
+}

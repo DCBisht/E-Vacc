@@ -81,7 +81,7 @@ const AdminPage = () => {
     })
   }, []);
   const sendMessage = () => {
-    fetch('http://localhost:5000/send-message', {
+    fetch('https://evacc-backend45.onrender.com/send-message', {
       method: 'POST',
     })
       .then((response) => response.text())
@@ -94,7 +94,7 @@ const AdminPage = () => {
   };
   const fetchUserData = async () => {
     try{
-        const response=await axios.get('http://localhost:5000/admin/getAllUsers');
+        const response=await axios.get('https://evacc-backend45.onrender.com/admin/getAllUsers');
         console.log(response);
         // setUserData(response.data);
         return response;

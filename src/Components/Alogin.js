@@ -25,7 +25,7 @@ const Alogin = () => {
       body: raw,
       redirect: "follow",
     };
-    fetch("http://localhost:5000/admin/SignUp", requestOptions)
+    fetch("https://evacc-backend45.onrender.com/admin/SignUp", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         console.log(result);

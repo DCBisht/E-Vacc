@@ -24,7 +24,7 @@ const SignUp = () => {
       body: raw,
       redirect: "follow",
     };
-    fetch("http://localhost:5000/user/UserLogin", requestOptions)
+    fetch("https://evacc-backend45.onrender.com/user/UserLogin", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         console.log(result);
