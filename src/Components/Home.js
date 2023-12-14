@@ -1,25 +1,12 @@
 import React, { useState,useEffect } from "react";
 import "../CSS/Home.css";
 import BlogCard from "./BlogCard";
+import { fetchBlogs } from "../api-calls/Helper";
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
-    // Add more blog entries as needed
     useEffect(()=>{
-      const fetchBlogs= async ()=>{
-        try{
-          const response= await fetch("https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=2d150873bef84605bfa29cbe9f751bbc");
-          if(!response.ok){
-            throw new Error(`Failed to fetch blogs. Status code: ${response.status}`);
-          }
-          const data = await response.json();
-          // console.log(data.articles);
-          setBlogs(data.articles);
-        }
-        catch(error){
-          console.log(error);
-        }
-      };
-      fetchBlogs();
+      fetchBlogs().then((data) => setBlogs(data))
+      .catch((err) => console.log(err));
     },[]);
   return (
     <section className="home" id="home">
@@ -38,7 +25,7 @@ export default function Home() {
       <div className="blog-list">
         {blogs.map((blog) => (
           <BlogCard
-            key={blog.id}
+            key={blog.url}
             title={blog.title}
             author={blog.author}
             date={blog.date}

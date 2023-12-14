@@ -1,0 +1,67 @@
+import axios from "axios";
+export const fetchBlogs = async ()=>{
+    try{
+      const response= await fetch("https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=2d150873bef84605bfa29cbe9f751bbc");
+      if(!response.ok){
+        throw new Error(`Failed to fetch blogs. Status code: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data.articles);
+      return data.articles;
+    }
+    catch(error){
+      console.log(error);
+    }
+  };
+
+  export const useVaccine = async ()=>{
+    let data = JSON.stringify({
+        "name": "TT-1",
+        "when_to_give": "Early in pregnancy",
+        "dose": "0.5 ml",
+        "route": "Intra-muscular",
+        "site": "Upper Arm",
+        "description": "TT-1, or Tetanus Toxoid 1, is administered early in pregnancy to provide protection against tetanus. This vaccine helps prevent tetanus-related complications during pregnancy and childbirth."
+      });
+      
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:5000/Vaccine/addVaccine',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      
+      axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+ export const getAllVaccine=async ()=>{
+    const res = await axios.get("http://localhost:5000/Vaccine/").catch((err) => console.log(err));
+
+    if (res.status !== 200) {
+      return console.log("No Data");
+    }
+  
+    const data = await res.data;
+    return data;
+
+}
+
+export const getVaccineDetails= async ({id})=>{
+    const res = await axios.get(`http://localhost:5000/Vaccine/${id}`).catch((err) => console.log(err));
+    // console.log(res);
+    if (res.status !== 200) {
+      return console.log("No Data");
+    }
+  
+    const data = await res.data;
+    return data;
+};

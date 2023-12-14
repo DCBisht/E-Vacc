@@ -13,6 +13,7 @@ import Booking from './Components/Booking.js'
 import AdminDashBoard from './Components/AdminDashBoard.js';
 import Admin from './Components/Admin.js'
 import UserProfile from './Components/UserProfile.js';
+import BookVaccine from './Components/BookVaccine.js';
 const router = createBrowserRouter([
   {
     path:'/',
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path:'/CreateUser',
     element: <><Navbar/><CreateUser/></>
+  },
+  {
+    path:'/booking/:id',
+    element:<><Navbar/><BookVaccine/></>
   },
   {
     path:'/AddVaccine',

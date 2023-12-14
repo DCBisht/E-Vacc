@@ -18,6 +18,10 @@
 .addVac .form input{
     width: 300px;
 }
+.addVac .form h4{
+    width: 300px;
+    text-align: center;
+}
 .addVac img{
     height: 600px;
 }

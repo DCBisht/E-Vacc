@@ -3,13 +3,13 @@ const Users = require('../models/Users');
 const Booking =require("../models/Booking");
 const mongoose= require("mongoose");
 
-export const newBooking = async (req, res, next) => {
+export const newBooking = async (req, res) => {
   const { vaccine, date, user } = req.body;
 
   let existingVaccine;
   let existingUser;
   try {
-    existingVaccine = await Vaccine.findById(movie);
+    existingVaccine = await Vaccine.findById(vaccine);
     existingUser = await Users.findById(user);
   } catch (err) {
     return console.log(err+"dcbisht");
@@ -23,7 +23,7 @@ export const newBooking = async (req, res, next) => {
   let booking;
 
   try {
-    booking = new Bookings({
+    booking = new Booking({
       vaccine,
       date: new Date(`${date}`),
       user,
