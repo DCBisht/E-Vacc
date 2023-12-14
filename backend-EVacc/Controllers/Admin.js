@@ -1,12 +1,25 @@
 const Admins = require('../models/Admins');
 const Users = require('../models/Users');
 
- const addAdmin= async function(req,res){
-    console.log(req.body);
-    const admin=Admins(req.body);
-    const response=await admin.save();
-    res.send(req.body);
-}
+const addAdmin = async (req, res, next) => {
+  const { adminid, password } = req.body;
+  if (!adminid && adminid.trim() === "" && !password && password.trim() === "") {
+    return res.status(422).json({ message: "Invalid Inputs" });
+  }
+  let admin;
+  // const hashedPassword = bcrypt.hashSync(password);
+  try {
+    admin = new Admins({ adminid, password });
+    admin = await admin.save();
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!admin) {
+    return res.status(500).json({ message: "Unable to store admin" });
+  }
+  return res.status(201).json({ admin });
+};
+
  const checkAdmin= async (req,res)=>{
     const {fullName,password}=req.body;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { getVaccineDetails } from '../api-calls/Helper';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getVaccineDetails, newBooking } from '../api-calls/Helper';
 
 export default function BookVaccine() {
     const id = useParams().id;
@@ -16,25 +16,21 @@ export default function BookVaccine() {
             console.log(vaccine);
         })
     },[]);
+    const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
         // Logic to handle form submission
         
         const date = event.target.date.value;
         const age = event.target.age.value;
-    
-        try {
-          const response = await axios.post("/admin/createUsers", {
-            firstName,
-            lastName,
-            phNo,
-            dob,
-            age,
-          });
-          console.log(response);
-        } catch (error) {
-          console.log(error);
-        }
+        newBooking({  vaccine: id , date:date, age:age}).then((res) =>{
+          console.log(res);
+          if(res==null ){
+            alert("Please login first to book a vaccine");
+            navigate('../login');
+          }
+        }).catch((err) => console.log(err));
+        
       };
     
       return (
@@ -48,7 +44,7 @@ export default function BookVaccine() {
             </label>
             <label htmlFor="date">
               Booking Date:
-              <input type="date" id="dob" name="dob" required />
+              <input type="date" id="dob" name="date" required />
             </label>
             <label htmlFor="age">
               Your Age:

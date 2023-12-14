@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { userActions } from "./store";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -7,6 +9,8 @@ const Login = () => {
   const [phNo, setPhNo] = useState("");
   const [dob, setDOB] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   function AddNewUser() {
     if (!name || !password || !phNo || !dob) {
       alert("Please enter both username and password.");
@@ -30,6 +34,8 @@ const Login = () => {
         // Check if the login was successful (you may need to adjust this based on your backend response)
         if (result != null) {
           // Navigate to the home page
+          dispatch(userActions.login());
+          localStorage.setItem("userId", result._id);
           navigate("/VaccineList");
         } else {
           alert("Login failed. Please check your credentials.");

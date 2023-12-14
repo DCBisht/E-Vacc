@@ -1,7 +1,7 @@
 // import React from 'react'
 import React, {  useEffect,useState } from 'react';
 import axios from 'axios';
-function UserProfile({userData}) {
+function UserProfile() {
 const styles = {
         container: {
           margin: '2px solid black',
@@ -33,25 +33,11 @@ const styles = {
           fontSize: '40px',
           marginBottom: '4px',
         },
-      };
+};
+  const [userData,setUserData]= useEffect([]);
 
-    // const phoneNumber= props.phNo;
-    // const dob= props.dob;
-    // const [userData, setUserData] = useState([]);
-    //const navigate = useNavigate();
-    // useEffect(() => {
-    // // Simulating fetching data from a database
-    // fetchUserData();
-    // }, []);
-
-    // const fetchUserData = async () => {
-    //   try{
-    //       const response=await axios.post('/user/UserLogin',{phoneNumber,dob});
-    //       console.log(response.data);
-    //       setUserData(response.data);
-    //     }catch(error) {console.log(error);}
-    // };
-  return (
+    
+   return (
     <div>
       <>
       <div style={styles.container}>

@@ -4,8 +4,8 @@ const {Schema}=mongoose;
 const AdminSchema=new Schema({
     adminid:{
         type:String,
-        default:'',
-        required:true
+        required:true,
+        unique:true,
     },
     password:{
         type:String,

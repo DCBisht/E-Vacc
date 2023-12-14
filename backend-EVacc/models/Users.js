@@ -9,6 +9,7 @@ const UserSchema = new Schema({
     },
     phNo: {
         type: Number,
+        unique:true,
         default: 0,
         required: true
     },
@@ -19,6 +20,10 @@ const UserSchema = new Schema({
     age: {
         type: Number,
         required: true
+    },
+    password:{
+        type: String,
+        required: true,
     },
     vaccines: [{
         type: mongoose.Types.ObjectId,

@@ -1,9 +1,9 @@
-import Vaccine from '../models/Vaccine';
+const Vaccine = require('../models/Vaccine');
 const Users = require('../models/Users');
 const Booking =require("../models/Booking");
 const mongoose= require("mongoose");
 
-export const newBooking = async (req, res) => {
+const newBooking = async (req, res) => {
   const { vaccine, date, user } = req.body;
 
   let existingVaccine;
@@ -45,7 +45,7 @@ export const newBooking = async (req, res) => {
   return res.status(201).json({ booking });
 };
 
-export const deleteBooking = async (req, res) => {
+ const deleteBooking = async (req, res) => {
   const id = req.params.id;
   let booking;
   try {
@@ -67,4 +67,18 @@ export const deleteBooking = async (req, res) => {
   return res.status(200).json({ message: "Successfully Deleted" });
 };
 
-module.exports={};
+const getBookingById = async (req, res, next) => {
+  const id = req.params.id;
+  let booking;
+  try {
+    booking = await Bookings.findById(id);
+  } catch (err) {
+    return console.log(err);
+  }
+  if (!booking) {
+    return res.status(500).json({ message: "Unexpected Error" });
+  }
+  return res.status(200).json({ booking });
+};
+
+module.exports={getBookingById,deleteBooking,newBooking};

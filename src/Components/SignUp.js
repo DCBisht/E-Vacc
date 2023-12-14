@@ -1,33 +1,38 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { userActions } from "./store";
 
 const SignUp = () => {
   const [password, setPassword] = useState("");
   const [phNo, setPhNo] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   function AddNewUser() {
     if ( !password || !phNo ) {
-      alert("Please enter both username and password.");
+      alert("Please enter both phonenumber and password.");
       return;
     }
     const age = 18;
     // console.log({ name, password, phNo, dob, age });
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({ name, password, phNo, dob, age });
+    var raw = JSON.stringify({  password, phNo });
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
     };
-    fetch("http://localhost:5000/user/UserSignUp", requestOptions)
+    fetch("http://localhost:5000/user/UserLogin", requestOptions)
       .then((response) => response.text())
       .then((result) => {
         console.log(result);
         // Check if the login was successful (you may need to adjust this based on your backend response)
         if (result != null) {
           // Navigate to the home page
+          dispatch(userActions.login());
+          localStorage.setItem("userId", result._id);
           navigate("/VaccineList");
         } else {
           alert("Login failed. Please check your credentials.");

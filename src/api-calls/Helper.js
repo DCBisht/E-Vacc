@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 export const fetchBlogs = async ()=>{
     try{
       const response= await fetch("https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=2d150873bef84605bfa29cbe9f751bbc");
@@ -64,4 +66,30 @@ export const getVaccineDetails= async ({id})=>{
   
     const data = await res.data;
     return data;
+};
+
+export const newBooking = async (data) => {
+  console.log({
+    vaccine: data.vaccine,
+    date: data.date,
+    user: localStorage.getItem("userId"),
+  });
+  const user = localStorage.getItem("userId");
+  // navigate = useNavigate();
+  if(user==null || user==undefined){
+    return null;
+  }
+  const res = await axios
+    .post("http://localhost:5000/Booking/", {
+      vaccine: data.vaccine,
+      date: data.date,
+      user: localStorage.getItem("userId"),
+    })
+    .catch((err) => console.log(err));
+
+  if (res.status !== 201) {
+    return console.log("Unexpected Error");
+  }
+  const resData = await res.data;
+  return resData;
 };

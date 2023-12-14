@@ -7,8 +7,8 @@ const UserLogin = async (req,res)=>{
         res.status(400).json({ error: 'phNo and dob are required in the request body' });
     }
     else {
-    const {phNo,dob} = req.body;
-    const currUser=await Users.find({$and:[{phNo:{$eq:phNo}},{dob:{$eq:dob}}]});
+    const {phNo,password} = req.body;
+    const currUser=await Users.find({$and:[{phNo:{$eq:phNo}},{password:{$eq:password}}]});
     if(currUser.length===0){ return res.status(401).json({error:'Invalid User Credentials'});}
     console.log("User Logged In");
     console.log(currUser);
@@ -27,7 +27,8 @@ const UserSignUp = async (req,res)=>{
       name: req.body.name,
       phNo: req.body.phNo,
       dob: req.body.dob,
-      age: req.body.age,// Assuming you provide an array of vaccines in the request body
+      age: req.body.age,
+      password:req.body.password,// Assuming you provide an array of vaccines in the request body
     });
 
     // Save the new user to the database
