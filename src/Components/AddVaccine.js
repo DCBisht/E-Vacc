@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import  '../CSS/AddVaccine.css';
+import { onAddVaccine } from '../api-calls/Helper';
 
-const AddVaccineForm = ({ onAddVaccine }) => {
+const AddVaccineForm = () => {
   const [vaccineData, setVaccineData] = useState({
     name: '',
     when_to_give: '',
@@ -18,16 +19,19 @@ const AddVaccineForm = ({ onAddVaccine }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddVaccine(vaccineData);
-    // You can also reset the form after submission if needed
-    setVaccineData({
-      name: '',
-      when_to_give: '',
-      dose: '',
-      route: '',
-      site: '',
-      description: '',
+    onAddVaccine(vaccineData).then(()=>{
+      alert("Vaccine added sussesfully");
+      setVaccineData({
+        name: '',
+        when_to_give: '',
+        dose: '',
+        route: '',
+        site: '',
+        description: '',
+      });
     });
+    // You can also reset the form after submission if needed
+    
   };
 
   return (

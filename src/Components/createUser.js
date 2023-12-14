@@ -6,19 +6,27 @@ const CreateUser = () => {
     // Logic to handle form submission
     const firstName = event.target.firstName.value;
     const lastName = event.target.lastName.value;
+    const name= firstName+lastName;
     const phNo = event.target.phNo.value;
     const dob = event.target.dob.value;
     const age = event.target.age.value;
+    const password= name+phNo;
 
     try {
-      const response = await axios.post("/admin/createUsers", {
-        firstName,
-        lastName,
+      const response = await axios.post("http://localhost:5000/admin/createUsers", {
+        name,
         phNo,
         dob,
         age,
+        password,
       });
       console.log(response);
+      if(response.status===200){
+        alert("User added sussesfully");
+      }
+      else{
+        alert("Server error please try again later");
+      }
     } catch (error) {
       console.log(error);
     }

@@ -93,3 +93,34 @@ export const newBooking = async (data) => {
   const resData = await res.data;
   return resData;
 };
+
+export const getAllUsers= async () => {
+  const res = await axios.get("http://localhost:5000/user").catch((err) => console.log(err));
+
+  if (res.status !== 200) {
+    return console.log("No Data");
+  }
+
+  const data = await res.data;
+  return data;
+};
+
+export const onAddVaccine= async(data) =>{
+    // const res=
+    const res = await axios
+    .post("http://localhost:5000/Vaccine/addVaccine", {
+      name:data.name,
+      when_to_give:data.when_to_give,
+      dose:data.dose,
+      description:data.description,
+      route:data.route,
+      site:data.site,
+    })
+    .catch((err) => console.log(err));
+
+  if (res.status !== 201) {
+    return console.log("Unexpected Error");
+  }
+  const resData = await res.data;
+  return resData;
+};

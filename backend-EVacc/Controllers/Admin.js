@@ -33,7 +33,7 @@ const addAdmin = async (req, res, next) => {
 const getAllUsers = async (req, res) => {
     let users;
     try {
-      users = await User.find();
+      users = await Users.find();
     } catch (err) {
       return console.log(err);
     }
@@ -45,9 +45,9 @@ const getAllUsers = async (req, res) => {
 
  const createUsers= async(req,res)=>{
     try{
-        const{firstName,lastName,phNo,dob,age}=req.body;
+        const{name,phNo,dob,age,password}=req.body;
         const user=new Users({
-            firstName,lastName,phNo,dob,age
+          name,phNo,dob,age,password
         })
 
         const savedUser=await user.save();

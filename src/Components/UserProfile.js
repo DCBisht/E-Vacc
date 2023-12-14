@@ -36,7 +36,8 @@ const styles = {
 };
   const [userData,setUserData]= useEffect([]);
 
-    
+  
+
    return (
     <div>
       <>
@@ -63,7 +64,7 @@ const styles = {
                 <td>{user.phNo}</td>
                 <td>{user.dob}</td>
                 <td>{user.age}</td>
-                <td><button onClick={handleOnclick}>Send message</button></td>
+                <td><button onClick={sendMessage}>Send message</button></td>
               </tr>
             ))}
           </tbody>
