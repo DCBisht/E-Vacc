@@ -9,7 +9,7 @@ export const fetchBlogs = async ()=>{
       }
       const data = await response.json();
       console.log(data.articles);
-      return data.articles;
+      return data;
     }
     catch(error){
       console.log(error);
